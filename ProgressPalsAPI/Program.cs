@@ -1,7 +1,15 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using Microsoft.Extensions.Configuration;
+using ProgressPalsAPI.Cognito.Interfaces;
+using ProgressPalsAPI.Domain.Settings;
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+var cognitoSettings = builder.Configuration.GetSection("CognitoClientSettings").Get<CognitoClientSettings>();
+// Registering CognitoClientSettings instance
+builder.Services.AddSingleton(cognitoSettings);
+// Add CognitoClient as a Singleton service
+builder.Services.AddSingleton<ICognitoClient, CognitoClient>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
