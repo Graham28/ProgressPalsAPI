@@ -5,6 +5,12 @@ VisualStudioVersion = 25.0.1704.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgressPalsAPI", "ProgressPalsAPI.csproj", "{AABEC09B-91DA-41D0-B782-FDF97E810227}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgressPalsAPI.Tests.Integration", "..\ProgressPalsAPI.Tests.Integration\ProgressPalsAPI.Tests.Integration.csproj", "{59C3872B-1C49-4C89-8953-E98B05F4AC9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgressPalsAPI.Domain", "..\ProgressPalsAPI.Domain\ProgressPalsAPI.Domain.csproj", "{010C7F10-1434-4EA1-901E-176222B09D07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgressPalsAPI.Cognito", "..\ProgressPalsAPI.Cognito\ProgressPalsAPI.Cognito.csproj", "{C577FFE4-4E67-459F-942E-D368AB3D45F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{AABEC09B-91DA-41D0-B782-FDF97E810227}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AABEC09B-91DA-41D0-B782-FDF97E810227}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AABEC09B-91DA-41D0-B782-FDF97E810227}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59C3872B-1C49-4C89-8953-E98B05F4AC9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59C3872B-1C49-4C89-8953-E98B05F4AC9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59C3872B-1C49-4C89-8953-E98B05F4AC9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59C3872B-1C49-4C89-8953-E98B05F4AC9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{010C7F10-1434-4EA1-901E-176222B09D07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{010C7F10-1434-4EA1-901E-176222B09D07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{010C7F10-1434-4EA1-901E-176222B09D07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{010C7F10-1434-4EA1-901E-176222B09D07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C577FFE4-4E67-459F-942E-D368AB3D45F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C577FFE4-4E67-459F-942E-D368AB3D45F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C577FFE4-4E67-459F-942E-D368AB3D45F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C577FFE4-4E67-459F-942E-D368AB3D45F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
