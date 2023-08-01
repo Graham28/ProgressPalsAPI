@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using ProgressPalsAPI.Cognito.Interfaces;
+using ProgressPalsAPI.Cognito.SessionTokenCache;
 using ProgressPalsAPI.Domain.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+// Add InMemoryAuthenticationResultCache as a Singleton service
+builder.Services.AddSingleton<IAuthenticationResultCache, InMemoryAuthenticationResultCache>();
 
 var app = builder.Build();
 

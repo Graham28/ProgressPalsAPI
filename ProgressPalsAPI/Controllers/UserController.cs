@@ -1,16 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProgressPalsAPI.Domain.User;
 using ProgressPalsAPI.Cognito.Interfaces;
+using Amazon.CognitoIdentityProvider.Model;
 
 [Route("api/[controller]")]
 [ApiController]
 public class UserController : ControllerBase
 {
     private readonly ICognitoClient _cognitoClient;
+    private readonly IAuthenticationResultCache _authCache;
 
-    public UserController(ICognitoClient cognitoClient)
+    public UserController(ICognitoClient cognitoClient, IAuthenticationResultCache authCache)
     {
         _cognitoClient = cognitoClient;
+        _authCache = authCache;
     }
 
     [HttpPost("register")]
@@ -42,7 +45,9 @@ public class UserController : ControllerBase
 
             if (result.AuthenticationResult != null)
             {
-                return Ok(new { Token = result.AuthenticationResult.AccessToken });
+                await _authCache.SetAuthenticationResultAsync(user.Email, result.AuthenticationResult);
+
+                return Ok(new LoginDetails { UserIdentifier = user.Email, Token = result.AuthenticationResult.AccessToken });
             }
 
             return BadRequest(new { Message = "Failed to login user." });
@@ -52,4 +57,19 @@ public class UserController : ControllerBase
             return BadRequest(new { Message = ex.Message });
         }
     }
+
+    [HttpPost("UserData")]
+    public async Task<IActionResult> GetUserData([FromBody] LoginDetails loginDetails)
+    {
+        var sessionIsValid = await _authCache.VerifySession(loginDetails);
+        if (sessionIsValid)
+        {
+            //Make call to get user data
+            // Just as a placeholder for now
+            var userData = new { Name = "John Doe" };
+            return Ok(userData);
+        }
+        return Unauthorized(new { Message = "Invalid session token." });
+    }
+
 }

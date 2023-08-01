@@ -9,15 +9,18 @@
   <ItemGroup>
     <None Remove="Interfaces\" />
     <None Remove="Client\" />
+    <None Remove="SessionTokenCache\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
     <Folder Include="Client\" />
+    <Folder Include="SessionTokenCache\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ProgressPalsAPI.Domain\ProgressPalsAPI.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AWSSDK.CognitoIdentityProvider" Version="3.7.200.5" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="7.0.0" />
   </ItemGroup>
 </Project>
